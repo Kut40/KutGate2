@@ -135,7 +135,7 @@ exit
 **4. KutGate'i indirip `/srv/gate` altına açın ve derleyin.**
 
 ```bash
-sudo git clone https://github.com/Kut40/kutgateV2.git /srv/gate   # ya da size gönderilen paketi /srv/gate altına açın
+sudo git clone https://github.com/Kut40/KutGate2.git /srv/gate   # ya da size gönderilen paketi /srv/gate altına açın
 sudo chown -R gate:gate /srv/gate
 sudo -iu gate bash -c 'source ~/.nvm/nvm.sh && cd /srv/gate/backend && npm ci && cd ../frontend && npm ci && npm run build'
 ```
