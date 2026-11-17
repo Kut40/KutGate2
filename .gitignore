@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.db
+.env
+data/
+data-real/
+git/
+__pycache__/
+*.key
+*.pem
+*.tar.gz
+cikti/

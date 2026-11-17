@@ -1,0 +1,30 @@
+KutGate — Lisans Sözleşmesi (Tescilli Yazılım)
+Telif Hakkı (c) 2026 KUT40. Tüm hakları saklıdır.
+
+1. Bu yazılım (kaynak kod, derlenmiş dosyalar, belgeler ve görseller dahil, "Yazılım") KUT40'ın
+   mülküdür. Yazılım satılmaz; yalnız lisanslanır.
+
+2. Yazılım, KUT40 tarafından yazılı olarak verilmiş ve süresi dolmamış geçerli bir lisans
+   (imzalı lisans dosyası) olmadan kurulamaz, çalıştırılamaz, kopyalanamaz ve kullanılamaz.
+   Lisans; lisans dosyasında adı yazan kurum, belirtilen süre ve lisans koşullarıyla sınırlıdır.
+
+3. Lisans sahibi, KUT40'ın önceden yazılı izni olmadan:
+   a) Yazılımı ya da herhangi bir parçasını üçüncü kişilere dağıtamaz, satamaz, kiralayamaz,
+      alt lisans veremez ya da hizmet olarak sunamaz;
+   b) lisans denetimini kaldıramaz, atlatamaz, devre dışı bırakamaz ya da değiştiremez;
+   c) Yazılımdaki telif, lisans ve marka bildirimlerini silemez ya da değiştiremez;
+   d) Yazılımdan türev ürün geliştirip dağıtamaz.
+
+4. Lisans sahibi, kendi kurulumu için gerekli ayarları (alan adı, kullanıcılar, ağ izinleri vb.)
+   yapabilir ve yedek alabilir. Yedekler de bu sözleşmeye tabidir.
+
+5. Yazılımın içerdiği üçüncü taraf bileşenler kendi lisanslarına tabidir; listesi ve lisans
+   metinleri `frontend/src/portal/vendor/THIRD_PARTY.md` ile ilgili klasörlerdedir.
+
+6. Yazılım "OLDUĞU GİBİ" sunulur. Yürürlükteki hukukun izin verdiği ölçüde KUT40, Yazılımın
+   kullanımından doğan doğrudan ya da dolaylı zararlardan sorumlu değildir.
+
+7. Bu koşullara aykırılık halinde lisans kendiliğinden sona erer; lisans sahibi Yazılımı ve tüm
+   kopyalarını kullanmayı bırakıp siler.
+
+Lisans almak için: KUT40 ile iletişime geçin.

@@ -1,0 +1,101 @@
+/*
+ * Halkalı saat. Kaynak: CodePen "Dail", Vineeth.TR (MIT).
+ * Tüm ölçüler --kg-dial-size'a oranlıdır.
+ * Renkler kilit ekranı token'larından gelir; dışarıda tanımlı değilse çekirdek token'lara düşer.
+ */
+.kg-dial {
+  --kg-dial-size: 200px;
+  --kg-dial-fg: var(--kg-lock-fg, var(--text));
+  --kg-dial-dim: var(--kg-lock-dim, var(--muted));
+  --kg-dial-bg: var(--kg-lock-bg, var(--bg));
+  position: relative;
+  width: var(--kg-dial-size);
+  height: var(--kg-dial-size);
+  flex: none;
+  border-radius: 50%;
+  color: var(--kg-dial-fg);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.kg-dial-ring {
+  --kg-dial-turn: 0deg;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform: rotate(calc(-1 * var(--kg-dial-turn)));
+  transition: transform 1s linear;
+}
+.kg-dial-sec { --kg-dial-radius: calc(var(--kg-dial-size) / 2 - var(--kg-dial-size) * 0.022); font-size: calc(var(--kg-dial-size) * 0.05); font-weight: 800; }
+.kg-dial-min { --kg-dial-radius: calc(var(--kg-dial-size) / 2 - var(--kg-dial-size) * 0.18); font-size: calc(var(--kg-dial-size) * 0.044); }
+
+.kg-dial-tick {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: calc(var(--kg-dial-size) * 0.022);
+  height: 1px;
+  background: var(--kg-dial-dim);
+  font-style: normal;
+  transform-origin: 50%;
+  transform: rotate(var(--kg-dial-angle)) translateX(var(--kg-dial-radius));
+}
+/* Her beşinci çentik uzun ve rakamlıdır; rakam halkayla ters dönüp dik kalır. */
+.kg-dial-tick:nth-child(5n + 1) { box-shadow: calc(var(--kg-dial-size) * -0.02) 0 var(--kg-dial-dim); }
+.kg-dial-tick:nth-child(5n + 1)::after {
+  content: attr(data-i);
+  position: absolute;
+  right: calc(var(--kg-dial-size) * 0.06);
+  top: calc(var(--kg-dial-size) * -0.028);
+  color: var(--kg-dial-dim);
+  transition: transform 1s linear;
+  transform: rotate(calc(var(--kg-dial-turn) - var(--kg-dial-angle)));
+}
+
+/* 59 -> 0 geçişi: halka geri sarmasın. */
+.kg-dial-still, .kg-dial-still .kg-dial-tick::after { transition: none; }
+
+.kg-dial-hh {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: calc(var(--kg-dial-size) * 0.17);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.kg-dial-mm {
+  position: absolute;
+  z-index: 2;
+  right: calc(var(--kg-dial-size) / 5.4);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 calc(var(--kg-dial-size) * 0.01);
+  font-size: calc(var(--kg-dial-size) * 0.1);
+  font-weight: 900;
+  /* Dakika halkasını örtmek için kilit ekranı zemini ile aynı tonda maske. */
+  background: var(--kg-dial-bg);
+  border-radius: calc(var(--kg-dial-size) * 0.02);
+}
+.kg-dial-mm::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--kg-dial-size) * -0.028);
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(var(--kg-dial-size) / 2.75);
+  height: calc(var(--kg-dial-size) * 0.14);
+  border: 2px solid var(--kg-dial-fg);
+  border-right: none;
+  border-radius: calc(var(--kg-dial-size) * 0.11) 0 0 calc(var(--kg-dial-size) * 0.11);
+  pointer-events: none;
+}
+
+@media (max-height: 800px) { .kg-dial { --kg-dial-size: 160px; } }
+@media (max-width: 480px) { .kg-dial { --kg-dial-size: 130px; } }
+@media (max-height: 640px) { .kg-dial { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .kg-dial-ring, .kg-dial-tick::after { transition: none; }
+}

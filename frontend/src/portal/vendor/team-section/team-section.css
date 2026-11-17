@@ -1,0 +1,401 @@
+/* "Team section #grid #scss" — Kristen, https://codepen.io/kristen17/pen/QWParNm
+   MIT Lisansı, Copyright (c) 2026 Kristen (tam metin: LICENSE.txt). */
+@import './fonts.css';
+
+.kg-team {
+  position: relative;
+  isolation: isolate;
+  background: #171717;
+  min-height: 100vh;
+  line-height: normal;
+}
+
+.kg-team,
+.kg-team * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.kg-team img {
+  max-width: 100%;
+  display: block;
+}
+
+.kg-team ul {
+  list-style-type: none;
+}
+
+.kg-team ul svg {
+  display: inline-block;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.kg-team ul svg:hover {
+  color: #00d7e8;
+}
+
+.kg-team section {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  padding-block: min(20vh, 6rem);
+  text-align: center;
+  width: calc(min(90rem, 90%));
+  margin-inline: auto;
+}
+
+.kg-team section span,
+.kg-team section p,
+.kg-team section h1,
+.kg-team section h3 {
+  letter-spacing: 0.035rem;
+}
+
+.kg-team section p {
+  line-height: 1.6;
+  color: #a3a3a3;
+  max-width: 50rem;
+  margin: 0 auto;
+  font-size: clamp(0.9rem, 0.825rem + 0.3vw, 1.2rem);
+}
+
+.kg-team section .intro {
+  position: relative;
+}
+
+.kg-team section .bg-watermark {
+  color: #1f1f1f;
+  font-size: clamp(6rem, 1.3333rem + 14.9333vw, 20rem);
+  font-weight: 800;
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  transform: translatex(-50%) translatey(-15%);
+  user-select: none;
+  letter-spacing: 0.5rem;
+}
+
+.kg-team section span {
+  text-transform: uppercase;
+  display: block;
+  font-size: 1.2rem;
+  color: #a3a3a3;
+}
+
+.kg-team section h1 {
+  font-size: clamp(3.5rem, 3rem + 1.6vw, 5rem);
+  font-weight: 300;
+  margin-top: -0.625rem;
+  color: #fff;
+}
+
+.kg-team section .cards {
+  margin-top: 4rem;
+  margin-inline: auto;
+  max-width: 40rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media screen and (min-width: 30rem) {
+  .kg-team section .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .kg-team section .cards .card:nth-child(3n + 2) {
+    transform: translatey(15%);
+  }
+}
+
+.kg-team section .card {
+  position: relative;
+  cursor: pointer;
+}
+
+.kg-team section .card h3,
+.kg-team section .card p {
+  text-transform: capitalize;
+}
+
+.kg-team section .card h3 {
+  font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.95rem);
+  font-weight: 400;
+  color: #f6f6f6;
+}
+
+.kg-team section .card p {
+  font-size: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  letter-spacing: 0.08rem;
+  font-weight: 300;
+  max-width: 100%;
+}
+
+.kg-team section .card::before {
+  position: absolute;
+  content: "";
+  width: 2.25rem;
+  height: 2.8rem;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+  background: #00a5ec;
+  background: linear-gradient(to left, #00d7e8, #00a5ec);
+  top: -0.25rem;
+  left: -0.25rem;
+}
+
+.kg-team section .card::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #232526;
+  background: linear-gradient(to bottom, hsl(210deg 2.99% 26.27% / 20%), hsl(0deg 0% 3.14% / 90%));
+}
+
+.kg-team section .card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 25%;
+  filter: grayscale(100%);
+  transition: 0.5s ease;
+}
+
+.kg-team section .card-content {
+  position: absolute;
+  bottom: 0;
+  z-index: 99;
+  left: 0;
+  color: #fff;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+}
+
+.kg-team section .card-content .card-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.kg-team section .card-projects {
+  margin-top: 0.5rem;
+}
+
+.kg-team section .card-projects-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: #9ea5b2;
+}
+
+.kg-team section .card-projects ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 0.3rem;
+}
+
+.kg-team section .card-projects li {
+  padding: 0.15rem 0.45rem;
+  border: 1px solid rgb(0 215 232 / 0.45);
+  border-radius: 999px;
+  background: rgb(9 13 22 / 0.6);
+  color: #e9fbfd;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.02rem;
+  white-space: nowrap;
+}
+
+.kg-team section .card-projects li.is-more {
+  border-color: rgb(255 255 255 / 0.25);
+  color: #9ea5b2;
+}
+
+.kg-team section .card:hover img {
+  filter: grayscale(0%);
+}
+
+.kg-team section .card:hover::before {
+  transform: scale(1.03);
+}
+
+.kg-team section .cards .card:nth-child(3n + 2)::before {
+  bottom: -0.25rem;
+  left: -0.25rem;
+  top: auto;
+}
+
+.kg-team section .card--featured {
+  width: min(16rem, 72%);
+  margin: 5rem auto 0;
+  box-shadow: 0 0 60px -18px rgb(0 215 232 / 0.6);
+}
+
+.kg-team section .card--featured img {
+  object-position: 50% 20%;
+}
+
+.kg-team section .card--featured::before,
+.kg-team section .card--featured .card-accent {
+  width: 3.25rem;
+  height: 4rem;
+}
+
+.kg-team section .card--featured::before {
+  top: -0.4rem;
+  left: -0.4rem;
+}
+
+.kg-team section .card--featured .card-accent {
+  position: absolute;
+  right: -0.4rem;
+  bottom: -0.4rem;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+  background: #00a5ec;
+  background: linear-gradient(to right, #00d7e8, #00a5ec);
+}
+
+.kg-team section .card--featured:hover .card-accent {
+  transform: scale(1.03);
+}
+
+.kg-team section .card--featured .card-content {
+  padding: 1.25rem 0.75rem;
+}
+
+.kg-team section .card--featured h3 {
+  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.2rem);
+  font-weight: 500;
+}
+
+.kg-team section .card--featured p {
+  font-size: clamp(0.7rem, 0.66rem + 0.15vw, 0.8rem);
+}
+
+@media screen and (min-width: 60rem) {
+  .kg-team section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(26rem, 45vw, 40rem);
+    column-gap: clamp(2rem, 5vw, 6rem);
+    align-items: start;
+  }
+
+  .kg-team section .bg-watermark {
+    font-size: clamp(6rem, 10vw, 12rem);
+  }
+
+  .kg-team section .card--featured {
+    width: min(16rem, 100%);
+    margin-top: 5rem;
+  }
+
+  .kg-team section .cards {
+    margin: 0;
+    max-width: none;
+  }
+}
+
+@media screen and (min-width: 60rem) and (min-height: 48rem) {
+  .kg-team section .intro {
+    position: sticky;
+    top: min(10vh, 4rem);
+  }
+}
+
+.kg-team section .card-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 98;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.kg-team section .card-hit:focus-visible {
+  outline: 2px solid #00d7e8;
+  outline-offset: 4px;
+}
+
+.kg-team section .card:focus-within img {
+  filter: grayscale(0%);
+}
+
+.kg-team section .card-content {
+  pointer-events: none;
+}
+
+.kg-team section .card-social a {
+  pointer-events: auto;
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: -0.875rem -0.75rem;
+  color: inherit;
+}
+
+.kg-team section .card-social a:focus-visible {
+  outline: 2px solid #00d7e8;
+  outline-offset: -0.5rem;
+  border-radius: 0.5rem;
+}
+
+.kg-team .kg-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.kg-team section {
+  position: relative;
+  z-index: 1;
+}
+
+.kg-team section .intro > :not(.bg-watermark) {
+  position: relative;
+  z-index: 1;
+}
+
+.kg-team .kg-synapse {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.kg-team section .card-projects li span {
+  display: inline;
+  font-size: inherit;
+  color: inherit;
+  text-transform: none;
+  letter-spacing: inherit;
+}
+

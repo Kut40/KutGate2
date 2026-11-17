@@ -1,0 +1,621 @@
+dialog.kg-glass.kg-glass {
+  position: fixed;
+  inset: 0;
+  width: min(35rem, calc(100% - 2rem));
+  max-width: none;
+  height: fit-content;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 6.6px;
+  background: rgb(0 0 0 / 0.55);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  color: #f3f5f8;
+  box-shadow: none;
+}
+
+.kg-glass::backdrop {
+  background: transparent;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.kg-glass.kg-glass .kg-glass-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 25rem;
+  padding: 2.5rem 1.5rem;
+}
+
+.kg-glass:focus-visible {
+  outline: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  dialog.kg-glass.kg-glass {
+    background: rgb(0 0 0 / 0.9);
+  }
+}
+
+dialog.kg-glass.kg-glass[open] {
+  animation: kg-glass-in 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kg-glass[open]::backdrop {
+  animation: kg-glass-fade 380ms ease-out;
+}
+
+@keyframes kg-glass-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+@keyframes kg-glass-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.kg-glass.kg-glass[open],
+  .kg-glass[open]::backdrop {
+    animation: none;
+  }
+}
+
+.kg-glass.kg-glass {
+  --kf-fg: #fafafa;
+  --kf-muted: #a1a1aa;
+  --kf-input: rgb(255 255 255 / 0.14);
+  --kf-input-hover: rgb(255 255 255 / 0.24);
+  --kf-input-bg: rgb(255 255 255 / 0.04);
+  --kf-ring: #00d7e8;
+  --kf-brand: #00a5ec;
+  --kf-brand-hover: #1ab3f1;
+  --kf-err: #f87171;
+  --kf-ok: #38d080;
+  --kf-err-title: #fecaca;
+  --kf-err-text: #fca5a5;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.kg-glass.kg-glass .kg-f-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(20rem, 100%);
+  margin: 0;
+  padding: 0;
+}
+
+.kg-glass.kg-glass .kg-f-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.kg-glass.kg-glass .kg-f-field--center {
+  align-items: center;
+}
+
+.kg-glass.kg-glass .kg-f-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: var(--kf-fg);
+}
+
+.kg-glass.kg-glass input.kg-f-input {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  height: 2.75rem;
+  margin: 0;
+  padding: 0 0.75rem;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1;
+  font-family: inherit;
+  color: var(--kf-fg);
+  background: var(--kf-input-bg);
+  border: 1px solid var(--kf-input);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+@media (min-width: 40rem) {
+  .kg-glass.kg-glass input.kg-f-input {
+    font-size: 0.875rem;
+  }
+}
+
+.kg-glass.kg-glass input.kg-f-input:hover {
+  border-color: var(--kf-input-hover);
+}
+
+.kg-glass.kg-glass input.kg-f-input:focus {
+  border-color: var(--kf-ring);
+  box-shadow: 0 0 0 3px rgb(0 215 232 / 0.24);
+}
+
+.kg-glass.kg-glass input.kg-f-input[aria-invalid="true"] {
+  border-color: rgb(248 113 113 / 0.6);
+}
+
+.kg-glass.kg-glass input.kg-f-input[aria-invalid="true"]:focus {
+  border-color: var(--kf-err);
+  box-shadow: 0 0 0 3px rgb(248 113 113 / 0.24);
+}
+
+.kg-glass.kg-glass input.kg-f-input:-webkit-autofill {
+  -webkit-text-fill-color: var(--kf-fg);
+  box-shadow: 0 0 0 1000px #17181b inset;
+}
+
+.kg-glass.kg-glass .kg-f-pw {
+  position: relative;
+}
+
+.kg-glass.kg-glass .kg-f-pw input.kg-f-input {
+  padding-right: 5.5rem;
+}
+
+.kg-glass.kg-glass .kg-f-toggle {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  margin: 0;
+  min-width: 2.75rem;
+  padding: 0 0.875rem;
+  border: 0;
+  border-left: 1px solid var(--kf-input);
+  border-radius: 0 calc(0.5rem - 1px) calc(0.5rem - 1px) 0;
+  background: transparent;
+  color: var(--kf-muted);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.kg-glass.kg-glass .kg-f-toggle:hover {
+  color: var(--kf-fg);
+  background: rgb(0 215 232 / 0.1);
+}
+
+.kg-glass.kg-glass .kg-f-otp {
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+.kg-glass.kg-glass .kg-f-desc,
+.kg-glass.kg-glass .kg-f-error,
+.kg-glass.kg-glass .kg-f-ok {
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: normal;
+  max-width: none;
+}
+
+.kg-glass.kg-glass .kg-f-desc {
+  color: var(--kf-muted);
+  text-align: center;
+}
+
+.kg-glass.kg-glass .kg-f-error {
+  color: var(--kf-err);
+}
+
+.kg-glass.kg-glass .kg-f-error--center {
+  text-align: center;
+}
+
+.kg-glass.kg-glass .kg-f-ok {
+  color: var(--kf-ok);
+}
+
+.kg-glass.kg-glass .kg-f-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 2.75rem;
+  margin: 0.25rem 0 0;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--kf-brand);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  transition: background-color 120ms ease;
+}
+
+.kg-glass.kg-glass .kg-f-submit:hover:not(:disabled) {
+  background: var(--kf-brand-hover);
+}
+
+.kg-glass.kg-glass .kg-f-submit:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.kg-glass.kg-glass .kg-f-spin {
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: kg-f-spin 700ms linear infinite;
+}
+
+@keyframes kg-f-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.kg-glass.kg-glass .kg-f-link {
+  align-self: center;
+  margin: 0;
+  min-height: 2.25rem;
+  padding: 0 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--kf-muted);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.kg-glass.kg-glass .kg-f-link:hover:not(:disabled) {
+  color: var(--kf-fg);
+}
+
+@media (pointer: coarse) {
+  .kg-glass.kg-glass .kg-f-link {
+    min-height: 2.75rem;
+  }
+}
+
+.kg-glass.kg-glass button:focus-visible {
+  outline: 2px solid var(--kf-ring);
+  outline-offset: 2px;
+}
+
+.kg-glass.kg-glass .kg-f-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.kg-glass.kg-glass .kg-f-title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  color: var(--kf-fg);
+}
+
+.kg-glass.kg-glass .kg-f-sub {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--kf-muted);
+}
+
+.kg-glass.kg-glass .kg-f-foot {
+  margin: 1.75rem 0 0;
+  width: min(20rem, 100%);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--kf-muted);
+  text-align: center;
+}
+
+.kg-glass.kg-glass .kg-f-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin: 0 0 0.75rem;
+  padding: 0.625rem 0.75rem;
+  list-style: none;
+  background: rgb(0 0 0 / 0.35);
+  border-radius: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--kf-muted);
+}
+
+.kg-glass.kg-glass .kg-f-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  animation: kg-f-step-in 200ms ease-out;
+}
+
+.kg-glass.kg-glass .kg-f-step-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 0.875rem;
+  flex: none;
+}
+
+.kg-glass.kg-glass .kg-f-step--run {
+  color: var(--kf-fg);
+}
+
+.kg-glass.kg-glass .kg-f-step--ok .kg-f-step-icon {
+  color: var(--kf-ok);
+}
+
+.kg-glass.kg-glass .kg-f-step--err,
+.kg-glass.kg-glass .kg-f-step--err .kg-f-step-icon {
+  color: var(--kf-err);
+}
+
+.kg-glass.kg-glass .kg-f-step-spin {
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 1.5px solid var(--kf-ring);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: kg-f-spin 700ms linear infinite;
+}
+
+@keyframes kg-f-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kg-glass.kg-glass .kg-f-step,
+  .kg-glass.kg-glass .kg-f-step-spin {
+    animation: none;
+  }
+}
+
+.kg-glass.kg-glass .kg-f-ip {
+  margin: 0.375rem 0 0;
+  width: min(20rem, 100%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--kf-muted);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.kg-glass.kg-glass .kg-f-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  margin: 0 0 0.75rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid rgb(248 113 113 / 0.35);
+  border-radius: 0.5rem;
+  background: rgb(248 113 113 / 0.1);
+  animation: kg-f-step-in 200ms ease-out;
+}
+
+.kg-glass.kg-glass .kg-f-alert-icon {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.0625rem;
+  fill: none;
+  stroke: var(--kf-err);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.kg-glass.kg-glass .kg-f-alert-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.kg-glass.kg-glass .kg-f-alert-title {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--kf-err-title);
+}
+
+.kg-glass.kg-glass .kg-f-alert-text {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  color: var(--kf-err-text);
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kg-glass.kg-glass .kg-f-alert {
+    animation: none;
+  }
+}
+
+.kg-glass.kg-glass .kg-f-otp {
+  width: 100%;
+  justify-content: center;
+}
+
+
+.kg-glass.kg-glass .kg-glass-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--kf-muted);
+  cursor: pointer;
+}
+
+.kg-glass.kg-glass .kg-glass-close svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+
+.kg-glass.kg-glass .kg-glass-close:hover:not(:disabled) {
+  color: var(--kf-fg);
+  background: rgb(255 255 255 / 0.08);
+}
+
+.kg-glass.kg-glass .kg-glass-close:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.kg-glass.kg-glass .kg-f-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 30rem) {
+  .kg-glass.kg-glass .kg-glass-body {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .kg-glass.kg-glass .kg-f-otp {
+    gap: 0.375rem;
+  }
+}
+
+.kg-glass.kg-glass .kg-f-otp {
+  position: relative;
+}
+
+.kg-glass.kg-glass input.kg-f-otp-input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  font-size: 1rem;
+  letter-spacing: 0;
+  outline: none;
+  box-shadow: none;
+  cursor: text;
+}
+
+.kg-glass.kg-glass input.kg-f-otp-input::selection {
+  background: transparent;
+}
+
+.kg-glass.kg-glass input.kg-f-otp-input:autofill,
+.kg-glass.kg-glass input.kg-f-otp-input:-webkit-autofill {
+  -webkit-text-fill-color: transparent;
+  box-shadow: none;
+}
+
+.kg-glass.kg-glass .kg-f-otp-slot {
+  display: grid;
+  place-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--kf-input);
+  border-radius: 0.5rem;
+  background: var(--kf-input-bg);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  color: var(--kf-fg);
+  font-size: 1rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.kg-glass.kg-glass .kg-f-otp:hover .kg-f-otp-slot {
+  border-color: var(--kf-input-hover);
+}
+
+.kg-glass.kg-glass .kg-f-otp .kg-f-otp-slot.is-active {
+  border-color: var(--kf-ring);
+  box-shadow: 0 0 0 3px rgb(0 215 232 / 0.24);
+}
+
+.kg-glass.kg-glass .kg-f-otp .kg-f-otp-slot.is-invalid {
+  border-color: rgb(248 113 113 / 0.6);
+}
+
+.kg-glass.kg-glass .kg-f-otp .kg-f-otp-slot.is-invalid.is-active {
+  border-color: var(--kf-err);
+  box-shadow: 0 0 0 3px rgb(248 113 113 / 0.24);
+}
+
+.kg-glass.kg-glass .kg-f-desc--start {
+  text-align: start;
+}
+
+.kg-glass.kg-glass .kg-f-notice {
+  margin: 0;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid rgb(56 208 128 / 0.35);
+  border-radius: 0.5rem;
+  background: rgb(56 208 128 / 0.1);
+  color: var(--kf-ok);
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+}
